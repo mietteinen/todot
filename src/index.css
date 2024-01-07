@@ -67,17 +67,6 @@ button {
     background-color: var(--secondary-color);
 }
 
-.todo-container-left {
-    
-} 
-
-.todo-container-center {
-}
-
-.todo-container-right {
-    
-}
-
 .drag-button {
     width: 30%;
     background-color: var(--secondary-color);
