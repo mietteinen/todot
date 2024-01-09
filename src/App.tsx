@@ -16,7 +16,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div id="app">
       <DarkModeButton onToggleDarkMode={toggleDarkMode} />
       <TodoList todos={todos} onAddTodo={addTodo} />
     </div>

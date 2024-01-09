@@ -6,21 +6,16 @@ interface TodoListProps {
     onAddTodo: (todo: string) => void;
 }
 
-const TodoList: React.FC<TodoListProps> = () => {
-    const [items, setItems] = useState<string[]>([]);
-
-    const addItem = () => {
-        const newItem = `New Item ${items.length + 1}`;
-        setItems([...items, newItem]);
-    };
+const TodoList: React.FC<TodoListProps> = ({ todos, onAddTodo }) => {
 
     return (
-        <div>
+        <div className="todo-div">
             <ul id="todo-list">
-                {items.map((item, index) => (
-                    <TodoItem key={index} text={item} />
+                {todos.map((todo, index) => (
+                    <TodoItem key={index} text={todo} />
                 ))}
             </ul>
+            <button onClick={() => onAddTodo('New Todo')}>Add Todo</button>
         </div>
     )
 }
