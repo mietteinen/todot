@@ -51,7 +51,6 @@ button {
     margin: 10px;
     font-size: 16px;
     cursor: pointer;
-
 }
 
 #root {
@@ -87,28 +86,21 @@ button {
     background-color: var(--secondary-color);
 }
 
-.drag-button {
-    width: 30%;
-    background-color: var(--secondary-color);
-    border: none;
-    border-radius: 0;
-}
-
-.drag-icon {
+/* Styling for the icons inside of TodoItems. */
+.li-icon {
     width: 20px;
     height: 20px;
 }
 
-.delete-button {
+/* Styling for the buttons inside of TodoItems. */
+.li-button {
     width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--secondary-color);
     border: none;
     border-radius: 0;
-}
-
-.delete-icon {
-    width: 20px;
-    height: 20px;
 }
 
 #todo-list {
