@@ -1,5 +1,5 @@
 import React from 'react';
-import DarkModeButton from './components/DarkModeButton';
+import NavBar from './components/NavBar';
 import TodoList from './components/TodoList';
 
 function App() {
@@ -10,17 +10,22 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
-  const toggleDarkMode = () => {
-    console.log('Toggling dark mode.');
-    document.body.classList.toggle('dark-mode');
+  const deleteTodo = (index: number) => {
+    const newTodos = todos.filter((todo, i) => i !== index);
+    setTodos(newTodos);
   };
 
   return (
     <div id="app">
-      <DarkModeButton onToggleDarkMode={toggleDarkMode} />
-      <TodoList todos={todos} onAddTodo={addTodo} />
+      
+      {/* Add a navigation bar on top of the main TodoList. */}
+      <NavBar />
+
+      {/* Make the main TodoList. */}
+      <TodoList todos={todos} onAddTodo={addTodo} onDeleteTodo={deleteTodo} />
+
     </div>
   );
-}
+};
 
 export default App;
