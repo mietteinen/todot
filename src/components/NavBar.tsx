@@ -1,12 +1,15 @@
 import React from 'react';
 import NavItem from './NavItem';
-import { toggleDarkMode } from '../utilities/buttonFunctions';
 
-const NavBar = () => {
+interface NavBarProps {
+    onSetColorMode: (mode: 'light' | 'dark') => void;
+};
+
+const NavBar: React.FC<NavBarProps> = ({ onSetColorMode }) => {
     return (
         <nav id="nav-bar">
             <ul id="nav-list">
-                <NavItem icon="/assets/icons/mode.png" altText="Dark Mode" onClickFunction={toggleDarkMode} />
+                <NavItem icon="/assets/icons/mode.png" altText="Dark Mode" onClickFunction={onSetColorMode} />
             </ul>
         </nav>
     );
