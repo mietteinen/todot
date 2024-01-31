@@ -1,5 +1,6 @@
 import React from 'react';
 import { getIconPath } from '../utilities/utils';
+import EditableField from './EditableField';
 
 interface TodoItemProps {
     key: number;
@@ -19,7 +20,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ text, onDelete }) => {
                 </button>
             </div>
             <div className="todo-container-center">
-                <span className="item-text">{text}</span>
+                <EditableField initialText="New Todo Item" />
             </div>
             <div className="todo-container-right">
                 <button className="li-button" onClick={onDelete}>
