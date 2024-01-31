@@ -1,15 +1,18 @@
 import React from 'react';
 import NavItem from './NavItem';
+import { getIconPath } from '../utilities/utils';
 
 interface NavBarProps {
     onSetColorMode: (mode: 'light' | 'dark') => void;
 };
 
 const NavBar: React.FC<NavBarProps> = ({ onSetColorMode }) => {
+    let modePath = getIconPath("mode-icon")
+
     return (
         <nav id="nav-bar">
             <ul id="nav-list">
-                <NavItem icon="/assets/icons/mode.png" altText="Dark Mode" onClickFunction={onSetColorMode} />
+                <NavItem icon={modePath} altText="Dark Mode" onClickFunction={onSetColorMode} />
             </ul>
         </nav>
     );

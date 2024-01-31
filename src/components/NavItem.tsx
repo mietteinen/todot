@@ -16,6 +16,7 @@ const NavItem: React.FC<NavItemProps> = ({ icon, altText, onClickFunction }) => 
      */
     const handleClick = () => {
         const newMode = mode === 'light' ? 'dark' : 'light';
+        localStorage.setItem('color-mode', newMode);
         setMode(newMode);
         onClickFunction(newMode);
     }
