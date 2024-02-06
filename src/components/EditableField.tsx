@@ -18,11 +18,9 @@ const EditableField: React.FC<EditableFieldProps> = ({ itemKey, initialText, onS
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
-        console.log('Changed ' + itemKey + ' to: ' + event.target.value);
     };
 
     const handleBlur = () => {
-        console.log('Blur event fired!');
         setIsEditing(false);
         onSave(itemKey, value);
     };
@@ -34,6 +32,7 @@ const EditableField: React.FC<EditableFieldProps> = ({ itemKey, initialText, onS
     useEffect(() => {
         if (isEditing && inputRef.current !== null) {
             inputRef.current.focus();
+            inputRef.current.select();
         }
     }, [isEditing])
 
