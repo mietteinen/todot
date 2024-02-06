@@ -3,14 +3,17 @@ import { getIconPath } from '../utilities/utils';
 import EditableField from './EditableField';
 
 interface TodoItemProps {
-    key: number;
+    index: number;
     text: string;
     onDelete: () => void;
+    onSaveText: (key: number, text: string) => void;
 };
 
-const TodoItem: React.FC<TodoItemProps> = ({ text, onDelete }) => {
+const TodoItem: React.FC<TodoItemProps> = ({ index, text, onDelete, onSaveText }) => {
     let dragPath = getIconPath('drag-icon');
     let deletePath = getIconPath('delete-icon');
+
+    let fieldText = text ? text : "New Todo Item";
     
     return (
         <li className="todo-list-item">
@@ -20,7 +23,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ text, onDelete }) => {
                 </button>
             </div>
             <div className="todo-container-center">
-                <EditableField initialText="New Todo Item" />
+                <EditableField itemKey={index} initialText={fieldText} onSave={onSaveText} />
             </div>
             <div className="todo-container-right">
                 <button className="li-button" onClick={onDelete}>
