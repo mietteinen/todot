@@ -20,17 +20,20 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onAddTodo, onDeleteTodo, onS
     };
 
     const handleSave = (key: number, text: string) => {
-        todos[key] = text; // Saving should happen in the parent component.
+        todos[key] = text;
         onSaveTodo(key, text);
     };
 
     return (
         <div className="todo-div">
-            <ul id="todo-list">
-                {todos.map((todo, index) => (
-                    <TodoItem key={generateKey()} index={index} text={todo} onDelete={() => handleDelete(index)} onSaveText={handleSave} />
-                ))}
-            </ul>
+            {todos.length === 0 ? ( <span id="no-todos">No Todos!</span> 
+            ) : (
+                <ul id="todo-list">
+                    {todos.map((todo, index) => (
+                        <TodoItem key={generateKey()} index={index} text={todo} onDelete={() => handleDelete(index)} onSaveText={handleSave} />
+                    ))}
+                </ul>
+            )}
             <button onClick={() => onAddTodo('New Todo')}>Add Todo</button>
         </div>
     );

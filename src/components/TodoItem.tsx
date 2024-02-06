@@ -26,7 +26,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ index, text, onDelete, onSaveText }
                 <EditableField itemKey={index} initialText={fieldText} onSave={onSaveText} />
             </div>
             <div className="todo-container-right">
-                <button className="li-button" onClick={onDelete}>
+                <button className="li-button" data-testid="Delete" onClick={onDelete}>
                     <img src={deletePath} className="li-icon" alt="Delete Button" />
                 </button>
             </div>
