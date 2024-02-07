@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, getByTestId } from '@testing-library/react';
+import { render, fireEvent, getByTestId, getByPlaceholderText } from '@testing-library/react';
 import TodoList from './TodoList';
 
 describe('TodoList', () => {
@@ -20,7 +20,7 @@ describe('TodoList', () => {
 
     describe('Interactions', () => {
 
-        it('adds a new Todo item when the add button is clicked', () => {
+        it('adds and deletes Todos from the corresponding buttons', () => {
             const onAddTodoMock = jest.fn();
             const onDeleteTodoMock = jest.fn();
             const { getByText } = render(<TodoList todos={['todo1']} onAddTodo={onAddTodoMock} onDeleteTodo={onDeleteTodoMock} onSaveTodo={() => {}} />);
@@ -33,6 +33,24 @@ describe('TodoList', () => {
 
             fireEvent.click(getByTestId(document.body, 'Delete'));
             expect(onDeleteTodoMock).toHaveBeenCalled();
+        });
+
+        it('changes the text of a Todo item', () => {
+            const onSaveTodoMock = jest.fn();
+            const { getByText } = render(<TodoList todos={['todo1']} onAddTodo={() => {}} onDeleteTodo={() => {}} onSaveTodo={onSaveTodoMock} />);
+            expect(getByText('todo1')).toBeInTheDocument();
+
+            const todoItem = getByText('todo1');
+            fireEvent.click(todoItem);
+            
+            const inputField = getByPlaceholderText(document.body, "Enter text here...");
+            expect(inputField).toHaveFocus();
+            
+            fireEvent.change(inputField, { target: { value: 'Test' } });
+            fireEvent.blur(inputField);
+            
+            expect(onSaveTodoMock).toHaveBeenCalled();
+            expect(getByText('Test')).toBeInTheDocument();
         });
     });
 });
