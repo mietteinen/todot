@@ -46,7 +46,7 @@ const EditableField: React.FC<EditableFieldProps> = ({ itemKey, initialText, onS
                     ref={inputRef}
                 />
             ) : (
-                <span onClick={() => setIsEditing(true)}>{value}</span>
+                <span style={{ userSelect: 'none' }} onClick={() => setIsEditing(true)}>{value}</span>
             )}
         </div>
     );
