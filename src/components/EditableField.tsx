@@ -1,5 +1,4 @@
-import { on } from 'events';
-import React, { createRef, useEffect, useRef } from 'react';
+import React, { createRef, useEffect } from 'react';
 
 interface EditableFieldProps {
     itemKey: number;
@@ -30,7 +29,7 @@ const EditableField: React.FC<EditableFieldProps> = ({ itemKey, initialText, onS
             inputRef.current.focus();
             inputRef.current.select();
         }
-    }, [isEditing])
+    }, [isEditing, inputRef])
 
     return (
         <div>
