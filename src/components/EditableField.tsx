@@ -25,17 +25,20 @@ const EditableField: React.FC<EditableFieldProps> = ({ itemKey, initialText, onS
     };
 
     useEffect(() => {
-        if (isEditing && inputRef.current !== null) {
+        if (isEditing && inputRef.current) {
             inputRef.current.focus();
             inputRef.current.select();
         }
-    }, [isEditing, inputRef])
+    // eslint-disable-next-line
+    }, [isEditing]);
 
     return (
         <div>
             {isEditing ? (
                 <input
+                    id="editable-field"
                     type="text"
+                    placeholder="Enter text here..."
                     value={value}
                     onChange={handleChange}
                     onBlur={handleBlur}
