@@ -12,10 +12,6 @@ const EditableField: React.FC<EditableFieldProps> = ({ itemKey, initialText, onS
     const [value, setValue] = React.useState(initialText);
     const inputRef = createRef<HTMLInputElement>();
 
-    const handleDoubleClick = () => {
-        setIsEditing(true);
-    };
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
     };
@@ -26,7 +22,7 @@ const EditableField: React.FC<EditableFieldProps> = ({ itemKey, initialText, onS
     };
 
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') { handleBlur(); }
+        if (event.key === 'Enter' || event.key === 'Escape') { handleBlur(); }
     };
 
     useEffect(() => {
@@ -37,14 +33,14 @@ const EditableField: React.FC<EditableFieldProps> = ({ itemKey, initialText, onS
     }, [isEditing])
 
     return (
-        <div onDoubleClick={handleDoubleClick}>
+        <div>
             {isEditing ? (
                 <input
                     type="text"
                     value={value}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    onKeyPress={handleKeyPress}
+                    onKeyUp={handleKeyPress}
                     ref={inputRef}
                 />
             ) : (
