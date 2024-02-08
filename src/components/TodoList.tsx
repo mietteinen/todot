@@ -1,6 +1,8 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 import TodoItem from './TodoItem';
+import '../styles/TodoList.css';
 
 interface TodoListProps {
     todos: string[];
@@ -34,7 +36,9 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onAddTodo, onDeleteTodo, onS
                     ))}
                 </ul>
             )}
-            <button onClick={() => onAddTodo('New Todo')}>Add Todo</button>
+            <div id="bottom-div">
+                <button onClick={() => onAddTodo('New Todo')}>Add Todo</button>
+            </div>
         </div>
     );
 };

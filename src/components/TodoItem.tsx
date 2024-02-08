@@ -1,6 +1,8 @@
 import React from 'react';
-import { getIconPath } from '../utilities/utils';
+
 import EditableField from './EditableField';
+import '../styles/TodoItem.css';
+import { getIconPath } from '../utilities/utils';
 
 interface TodoItemProps {
     index: number;

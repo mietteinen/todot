@@ -1,5 +1,7 @@
 import React from 'react';
+
 import NavItem from './NavItem';
+import '../styles/NavBar.css';
 import { getIconPath } from '../utilities/utils';
 
 interface NavBarProps {

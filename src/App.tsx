@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './components/NavBar';
 import TodoList from './components/TodoList';
+import './styles/global.css';
 
 function App() {
 

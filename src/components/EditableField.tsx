@@ -1,5 +1,7 @@
 import React, { createRef, useEffect } from 'react';
 
+import '../styles/EditableField.css';
+
 interface EditableFieldProps {
     itemKey: number;
     initialText: string;
