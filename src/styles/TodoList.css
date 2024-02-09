@@ -5,9 +5,12 @@
     flex-direction: column;
     height: 100vh;
     margin: 0;
+    border: none;
+    border-radius: 0;
     padding-top: calc(10vh + max(0px, (64px - 10vh)));
     overflow: hidden;
     background-color: var(--secondary-color);
+    transition: border-radius 0.5s ease-in;
 }
 
 #todo-list {
@@ -42,5 +45,7 @@
     .todo-div {
         height: calc(100vh - 150px);
         padding: 0;
+        border: 1px solid var(--text-color);
+        border-radius: 32px;
     }
 }

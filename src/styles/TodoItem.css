@@ -2,15 +2,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     height: 50px;
     color: var(--text-color);
-    border: 1px solid var(--text-color);
+    border-bottom: 1px solid var(--text-color);
     border-radius: 0;
-    margin-top: -1px;
-    margin-left: -1px;
     text-align: center;
-    clear: both;
+}
+
+.todo-container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    width: calc(100% - 2 * 80px);
+    height: 100%;
+
 }
 
 /* Styling for the icons inside of TodoItems. */
@@ -21,11 +28,22 @@
 
 /* Styling for the buttons inside of TodoItems. */
 .li-button {
+    transition: all .3s ease;
     width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--secondary-color);
-    border: none;
-    border-radius: 0;
+    border: 1px solid transparent;
+    border-radius: 16px;
+}
+
+.li-button:hover {
+    border: 1px solid var(--text-color);
+}
+
+@media screen and (min-width: 1024px) {
+    .todo-list-item {
+        width: 100%;
+    }
 }

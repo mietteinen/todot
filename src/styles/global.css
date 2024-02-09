@@ -4,7 +4,7 @@
     --accent-color-light: #17b9cf;
     --background-color-light: #ebf8fa;
     --text-color-light: #010809;
-
+    
     --primary-color-dark: #7ee3f1;
     --secondary-color-dark: #083d44;
     --accent-color-dark: #30d3e8;
@@ -14,6 +14,7 @@
 
 /* Default body to light mode */
 body {
+    transition: all .3s ease;
     --primary-color: var(--primary-color-light);
     --secondary-color: var(--secondary-color-light);
     --accent-color: var(--accent-color-light);
@@ -28,6 +29,8 @@ body {
     justify-content: center;
     height: 100%;
     margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 
     font-family: "Poppins", sans-serif;
 }
@@ -70,15 +73,13 @@ button {
     width: 100vw;
 }
 
-/* Tablet styling */
-@media screen and (min-width: 768px) {}
-
 /* Desktop styling */
 @media screen and (min-width: 1024px) {
     #app {
         width: 50rem;
         height: 50rem;
         display: grid;
+        grid-auto-rows: min-content;
         row-gap: 5px;
         justify-content: center;
         align-items: center;
