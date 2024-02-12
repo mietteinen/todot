@@ -1,3 +1,7 @@
+#editable-field #text-span {
+    width: calc(100% - 2 * 80px);
+}
+
 #editable-field {
     display: flex;
     justify-content: center;
@@ -17,7 +21,6 @@
 }
 
 #text-span {
-    width: calc(100% - 2 * 80px);
     user-select: none;
     text-overflow: ellipsis;
 }

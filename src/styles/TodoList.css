@@ -28,9 +28,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
+    height: 80px;
     width: 100%;
 }
+
+#add-button {
+    height: 54px;
+    margin: 10px;
+    box-shadow: 0px 2px px 0px var(--primary-color);
+}
+
 
 #no-todos {
     display: flex;
@@ -43,9 +50,18 @@
 
 @media screen and (min-width: 1024px) {
     .todo-div {
-        height: calc(100vh - 150px);
+        height: 60vh;
+        width: 40vw;
         padding: 0;
         border: 1px solid var(--text-color);
         border-radius: 32px;
+    }
+
+    #bottom-div {
+        height: 60px;
+    }
+
+    #add-button {
+        height: 44px;
     }
 }

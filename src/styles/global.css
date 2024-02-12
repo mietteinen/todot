@@ -10,6 +10,10 @@
     --accent-color-dark: #30d3e8;
     --background-color-dark: #111717;
     --text-color-dark: #f6fdfe;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Default body to light mode */
@@ -27,7 +31,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 100vh;
     margin: 0;
     max-width: 100%;
     overflow-x: hidden;

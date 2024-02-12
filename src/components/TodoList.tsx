@@ -37,7 +37,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onAddTodo, onDeleteTodo, onS
                 </ul>
             )}
             <div id="bottom-div">
-                <button onClick={() => onAddTodo('New Todo')}>Add Todo</button>
+                <button id="add-button" onClick={() => onAddTodo('New Todo')}>Add Todo</button>
             </div>
         </div>
     );
