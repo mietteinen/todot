@@ -1,0 +1,26 @@
+#editable-field #text-span {
+    width: calc(100% - 2 * 80px);
+}
+
+#editable-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    text-align: center;
+    cursor: text;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    font-family: "Poppins", sans-serif;
+}
+
+#editable-field:focus {
+    outline: none;
+}
+
+#text-span {
+    user-select: none;
+    text-overflow: ellipsis;
+}

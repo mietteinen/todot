@@ -1,5 +1,7 @@
 import React, { createRef, useEffect } from 'react';
 
+import '../styles/EditableField.css';
+
 interface EditableFieldProps {
     itemKey: number;
     initialText: string;
@@ -46,7 +48,7 @@ const EditableField: React.FC<EditableFieldProps> = ({ itemKey, initialText, onS
                     ref={inputRef}
                 />
             ) : (
-                <span style={{ userSelect: 'none' }} onClick={() => setIsEditing(true)}>{value}</span>
+                <span id="text-span" onClick={() => setIsEditing(true)}>{value}</span>
             )}
         </div>
     );

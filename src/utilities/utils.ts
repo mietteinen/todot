@@ -1,3 +1,8 @@
+export interface Todo {
+    id: string;
+    value: string;
+}
+
 /**
  * Return the path of the icon with the color mode
  * taken into account.

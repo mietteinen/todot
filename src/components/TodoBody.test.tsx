@@ -7,13 +7,21 @@ describe('TodoList', () => {
     describe('Rendering', () => {
     
         it('renders TodoList component with given Todo items', () => {
-            const { getByText } = render(<TodoList todos={['todo1', 'todo2']} onAddTodo={() => {}} onDeleteTodo={() => {}} onSaveTodo={() => {}} />);
+            const { getByText } = render(<TodoList todos={[{id: '1', value: 'todo1'}, {id: '2', value: 'todo2'}]} 
+                                                   onAddTodo={() => {}} 
+                                                   onDeleteTodo={() => {}} 
+                                                   onSaveTodo={() => {}}
+                                                   onReorderTodo={() => {}} />);
             expect(getByText('todo1')).toBeInTheDocument();
             expect(getByText('todo2')).toBeInTheDocument();
         });
 
         it('renders TodoList component with no Todo items', () => {
-            const { getByText } = render(<TodoList todos={[]} onAddTodo={() => {}} onDeleteTodo={() => {}} onSaveTodo={() => {}} />);
+            const { getByText } = render(<TodoList todos={[]} 
+                                                   onAddTodo={() => {}} 
+                                                   onDeleteTodo={() => {}} 
+                                                   onSaveTodo={() => {}}
+                                                   onReorderTodo={() => {}}  />);
             expect(getByText('No Todos!')).toBeInTheDocument();
         });
     });
@@ -23,7 +31,11 @@ describe('TodoList', () => {
         it('adds and deletes Todos from the corresponding buttons', () => {
             const onAddTodoMock = jest.fn();
             const onDeleteTodoMock = jest.fn();
-            const { getByText } = render(<TodoList todos={['todo1']} onAddTodo={onAddTodoMock} onDeleteTodo={onDeleteTodoMock} onSaveTodo={() => {}} />);
+            const { getByText } = render(<TodoList todos={[{id: '1', value: 'todo1'}]} 
+                                                   onAddTodo={onAddTodoMock} 
+                                                   onDeleteTodo={onDeleteTodoMock} 
+                                                   onSaveTodo={() => {}}
+                                                   onReorderTodo={() => {}}  />);
             
             expect(onAddTodoMock).not.toHaveBeenCalled();
             expect(onDeleteTodoMock).not.toHaveBeenCalled();
@@ -37,7 +49,11 @@ describe('TodoList', () => {
 
         it('changes the text of a Todo item', () => {
             const onSaveTodoMock = jest.fn();
-            const { getByText } = render(<TodoList todos={['todo1']} onAddTodo={() => {}} onDeleteTodo={() => {}} onSaveTodo={onSaveTodoMock} />);
+            const { getByText } = render(<TodoList todos={[{id: '1', value: 'todo1'}]} 
+                                                   onAddTodo={() => {}} 
+                                                   onDeleteTodo={() => {}} 
+                                                   onSaveTodo={onSaveTodoMock}
+                                                   onReorderTodo={() => {}}  />);
             expect(getByText('todo1')).toBeInTheDocument();
 
             const todoItem = getByText('todo1');

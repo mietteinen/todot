@@ -1,10 +1,14 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import NavBar from './components/NavBar';
 import TodoList from './components/TodoList';
+import './styles/global.css';
+import { Todo } from './utilities/utils';
 
 function App() {
 
-  const [todos, setTodos] = React.useState<string[]>([]);
+  const [todos, setTodos] = React.useState<Todo[]>([])
   const [colorMode, setColorMode] = React.useState<'light' | 'dark'>(
     () => (localStorage.getItem('color-mode') as 'light' | 'dark') || 'light'
   );
@@ -50,9 +54,15 @@ function App() {
   /**
    * @param newTodo The new todo to add to the list.
    */
-  const addTodo = (newTodo: string) => {
-    setTodos([...todos, newTodo]);
-    localStorage.setItem('todos', JSON.stringify([...todos, newTodo]));
+  const addTodo = (newTodoValue: string) => {
+    let newTodo: Todo = {
+      id: uuidv4(),
+      value: newTodoValue
+    }
+    let newTodos = [...todos, newTodo];
+
+    setTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
   };
 
   /**
@@ -66,9 +76,18 @@ function App() {
 
   const saveTodo = (index: number, text: string) => {
     let newTodos = [...todos];
-    newTodos[index] = text;
-    setTodos(newTodos);
-    //localStorage.setItem('todos', JSON.stringify(todos));
+    newTodos[index].value = text;
+
+    setTodos(newTodos);    
+  }
+
+  const reorderTodos = (startIndex: number, endIndex: number) => {
+    const result = Array.from(todos);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    setTodos(result);
+    localStorage.setItem('todos', JSON.stringify(result));
   }
 
   return (
@@ -78,7 +97,7 @@ function App() {
       <NavBar onSetColorMode={changeColorMode} />
 
       {/* Make the main TodoList. */}
-      <TodoList todos={todos} onAddTodo={addTodo} onDeleteTodo={deleteTodo} onSaveTodo={saveTodo} />
+      <TodoList todos={todos} onAddTodo={addTodo} onDeleteTodo={deleteTodo} onSaveTodo={saveTodo} onReorderTodo={reorderTodos} />
 
     </div>
   );

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../styles/NavItem.css';
+
 interface NavItemProps {
     icon: string;
     altText: string;
