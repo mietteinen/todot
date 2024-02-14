@@ -9,9 +9,10 @@ interface TodoItemProps {
     text: string;
     onDelete: () => void;
     onSaveText: (key: number, text: string) => void;
+    dragHandleProps: any;
 };
 
-const TodoItem: React.FC<TodoItemProps> = ({ index, text, onDelete, onSaveText }) => {
+const TodoItem: React.FC<TodoItemProps> = ({ index, text, onDelete, onSaveText, dragHandleProps }) => {
     let dragPath = getIconPath('drag-icon');
     let deletePath = getIconPath('delete-icon');
 
@@ -20,9 +21,11 @@ const TodoItem: React.FC<TodoItemProps> = ({ index, text, onDelete, onSaveText }
     return (
         <li className="todo-list-item">
             <div className="todo-container-left">
-                <button className="li-button">
+                <div {...dragHandleProps}
+                     className="li-button"
+                     id="drag-div">
                     <img src={dragPath} className="li-icon" alt="Drag Button" />
-                </button>
+                </div>
             </div>
             <div className="todo-container-center">
                 <EditableField itemKey={index} initialText={fieldText} onSave={onSaveText} />
